@@ -18,7 +18,7 @@
         "url": "MadAppGang/magus",
         "path": "plugins/autolinear",
         "ref": "main",
-        "sha": "eaf8003c44809cf94563694f0005c9a601de57c5"
+        "sha": "daec04c78b486f7619c1cc36327703d069a98d7b"
       },
       "description": "Autonomous Linear \u2192 Claude Code bridge. Picks Linear issues labeled @autolinear, routes them to agents via tag-to-command mapping, captures proof-of-work artifacts (screenshots, test output, coverage), and drives the issue through Todo \u2192 In Progress \u2192 In Review \u2192 Done with reviewer-comment feedback loops. Alpha: manual /autolinear:run <id> path is end-to-end; autonomous webhook-triggered pickup is wired at the receiver but queue \u2192 Claude Code dispatch is a TODO stub.",
       "version": "0.3.0",
