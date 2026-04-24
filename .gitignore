@@ -1,2 +1,10 @@
-# Claude Code session artifacts (per-project scratch state, not part of the marketplace)
-.claude/
+.DS_Store
+node_modules/
+.env
+.env.local
+__pycache__/
+*.pyc
+.build/
+DerivedData/
+.venv/
+venv/

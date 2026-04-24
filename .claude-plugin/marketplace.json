@@ -6,20 +6,14 @@
     "company": "MadAppGang"
   },
   "metadata": {
-    "description": "Alpha distribution channel for Magus \u2014 experimental plugins with partial wiring, TODO-gaps, and evolving interfaces. Code lives in MadAppGang/magus; this marketplace is a lean distribution index.",
-    "version": "0.1.0",
+    "description": "Curated collection of Claude Code plugins for modern full-stack development with LLM performance tracking and E2E skill testing",
+    "version": "7.4.1",
     "pluginRoot": "./plugins"
   },
   "plugins": [
     {
       "name": "autolinear",
-      "source": {
-        "source": "git-subdir",
-        "url": "MadAppGang/magus",
-        "path": "plugins/autolinear",
-        "ref": "main",
-        "sha": "c391893533f18e021c90d2f4804041178f7ac232"
-      },
+      "source": "./plugins/autolinear",
       "description": "Autonomous Linear \u2192 Claude Code bridge. Picks Linear issues labeled @autolinear, routes them to agents via tag-to-command mapping, captures proof-of-work artifacts (screenshots, test output, coverage), and drives the issue through Todo \u2192 In Progress \u2192 In Review \u2192 Done with reviewer-comment feedback loops. Alpha: manual /autolinear:run <id> path is end-to-end; autonomous webhook-triggered pickup is wired at the receiver but queue \u2192 Claude Code dispatch is a TODO stub.",
       "version": "0.3.0",
       "author": {
