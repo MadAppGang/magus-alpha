@@ -6,8 +6,8 @@
     "company": "MadAppGang"
   },
   "metadata": {
-    "description": "Curated collection of Claude Code plugins for modern full-stack development with LLM performance tracking and E2E skill testing",
-    "version": "7.4.1",
+    "description": "Alpha distribution channel for Magus \u2014 experimental plugins with partial wiring, TODO-gaps, and evolving interfaces. Source of truth: MadAppGang/magus-src. This is a lean dist repo.",
+    "version": "0.4.0",
     "pluginRoot": "./plugins"
   },
   "plugins": [
