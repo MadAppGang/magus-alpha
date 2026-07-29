@@ -14,7 +14,7 @@
     {
       "name": "autolinear",
       "source": "./plugins/autolinear",
-      "description": "Autonomous Linear \u2192 Claude Code bridge. Picks Linear issues labeled @autolinear, routes them to agents via tag-to-command mapping, captures proof-of-work artifacts (screenshots, test output, coverage), and drives the issue through Todo \u2192 In Progress \u2192 In Review \u2192 Done with reviewer-comment feedback loops. Alpha: manual /autolinear:run <id> path is end-to-end; autonomous webhook-triggered pickup is wired at the receiver but queue \u2192 Claude Code dispatch is a TODO stub.",
+      "description": "Autonomous Linear to Claude Code bridge. Picks up issues labelled @autolinear, routes them to agents by tag, captures proof-of-work, and drives each issue from Todo to Done with reviewer feedback loops. Alpha: manual /autolinear:run is end to end; webhook pickup stops at a dispatch stub.",
       "version": "0.3.0",
       "author": {
         "name": "Jack Rudenko",
@@ -34,7 +34,17 @@
         "feedback-loop",
         "multi-agent"
       ],
-      "strict": true
+      "strict": true,
+      "releases": [
+        {
+          "version": "0.3.0",
+          "date": "2026-04-15",
+          "kinds": [
+            "Changed"
+          ],
+          "summary": "Renamed from autopilot and split out to the magus-alpha channel. Enable it as\u2026"
+        }
+      ]
     }
   ]
 }

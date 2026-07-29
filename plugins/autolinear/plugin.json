@@ -1,7 +1,7 @@
 {
   "name": "autolinear",
   "version": "0.3.0",
-  "description": "Autonomous task execution with Linear integration. Picks tasks from Linear, routes to agents via tag-to-command mapping, generates proof-of-work artifacts, and handles reviewer-comment feedback loops. Alpha: manual path (/autolinear:run <id>) is end-to-end; autonomous webhook pickup is wired at the receiver but queue → Claude Code dispatch is a stub.",
+  "description": "Autonomous Linear to Claude Code bridge. Picks up issues labelled @autolinear, routes them to agents by tag, captures proof-of-work, and drives each issue from Todo to Done with reviewer feedback loops. Alpha: manual /autolinear:run is end to end; webhook pickup stops at a dispatch stub.",
   "author": {
     "name": "Jack Rudenko",
     "email": "i@madappgang.com",
