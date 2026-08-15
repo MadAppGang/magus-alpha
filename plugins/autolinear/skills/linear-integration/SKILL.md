@@ -1,9 +1,6 @@
 ---
 name: linear-integration
 description: Linear API patterns and examples for autolinear. Includes authentication, webhooks, issue CRUD, state transitions, file attachments, and comment handling.
-version: 0.1.0
-tags: [linear, api, webhook, integration]
-keywords: [linear, api, webhook, issue, comment, state, attachment]
 user-invocable: false
 ---
 plugin: autolinear

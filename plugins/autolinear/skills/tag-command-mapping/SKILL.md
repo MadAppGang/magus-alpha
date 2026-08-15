@@ -1,9 +1,6 @@
 ---
 name: tag-command-mapping
 description: How tag-to-command routing works in autolinear. Defines default mappings, precedence rules, and customization patterns.
-version: 0.1.0
-tags: [routing, tags, commands, mapping]
-keywords: [tag, command, mapping, routing, classification, precedence]
 user-invocable: false
 ---
 plugin: autolinear
@@ -32,14 +29,14 @@ Tag-to-command mapping is the core routing mechanism in autolinear. When a task 
 
 | Linear Tag | Command | Agent | Skills |
 |------------|---------|-------|--------|
-| @frontend | /dev:feature | developer | react-typescript |
-| @backend | /dev:implement | developer | golang, api-design |
+| @frontend | /dev:dev | developer | react-typescript |
+| @backend | /dev:dev | developer | golang, api-design |
 | @debug | /dev:debug | debugger | debugging-strategies |
-| @test | /dev:test-architect | test-architect | testing-strategies |
-| @review | /commit-commands:commit-push-pr | reviewer | universal-patterns |
-| @refactor | /dev:implement | developer | universal-patterns |
-| @research | /dev:deep-research | researcher | n/a |
-| @ui | /dev:ui | ui | ui-design-review |
+| @test | /dev:dev | test-architect | testing-strategies |
+| @review | /dev:audit | reviewer | universal-patterns |
+| @refactor | /dev:dev | developer | universal-patterns |
+| @research | /dev:research | researcher | n/a |
+| @ui | /dev:design-system | frontend | design-system-guardrails |
 
 ## Precedence Rules
 
@@ -80,13 +77,13 @@ Users can define custom mappings in `.claude/autolinear.local.md`:
 ---
 tag_mappings:
   "@database":
-    command: "/dev:implement"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["database-patterns"]
     systemPrompt: "You are a database specialist."
 
   "@performance":
-    command: "/dev:implement"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["universal-patterns"]
     systemPrompt: "You are a performance optimization expert."
@@ -152,7 +149,7 @@ function resolveMapping(labels: string[], title: string, desc: string) {
 const labels = ['@frontend', 'feature'];
 const tag = selectTag(labels);  // '@frontend'
 const mapping = getMappingForTag(tag);
-// Result: { command: '/dev:feature', agent: 'developer', skills: ['react-typescript'] }
+// Result: { command: '/dev:dev', agent: 'developer', skills: ['react-typescript'] }
 ```
 
 ### Example 2: Multiple Tag Precedence

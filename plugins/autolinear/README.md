@@ -87,14 +87,14 @@ When autolinear picks up a task, it routes to the appropriate command based on L
 
 | Tag | Command | Use Case |
 |-----|---------|----------|
-| @frontend | /dev:feature | React/Vue/TypeScript implementation |
-| @backend | /dev:implement | API/database work |
+| @frontend | /dev:dev | React/Vue/TypeScript implementation |
+| @backend | /dev:dev | API/database work |
 | @debug | /dev:debug | Bug investigation and fixing |
-| @test | /dev:test-architect | Test creation |
-| @review | /commit-commands:commit-push-pr | Code review + PR |
-| @refactor | /dev:implement | Code improvement |
-| @research | /dev:deep-research | Investigation tasks |
-| @ui | /dev:ui | Design validation |
+| @test | /dev:dev | Test creation (routes to the test-architect agent) |
+| @review | /dev:audit | Code review |
+| @refactor | /dev:dev | Code improvement |
+| @research | /dev:research | Investigation tasks |
+| @ui | /dev:design-system | Design validation |
 
 ### Precedence Rules
 

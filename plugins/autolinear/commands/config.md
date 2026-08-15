@@ -108,14 +108,14 @@ skills: autolinear:linear-integration, autolinear:tag-command-mapping
       <steps>
         <step>
           Show default tag mappings:
-          "@frontend -> /dev:feature
-           @backend -> /dev:implement
+          "@frontend -> /dev:dev
+           @backend -> /dev:dev
            @debug -> /dev:debug
-           @test -> /dev:test-architect
-           @review -> /commit-commands:commit-push-pr
-           @refactor -> /dev:implement
-           @research -> /dev:deep-research
-           @ui -> /dev:ui"
+           @test -> /dev:dev
+           @review -> /dev:audit
+           @refactor -> /dev:dev
+           @research -> /dev:research
+           @ui -> /dev:design-system"
         </step>
         <step>
           AskUserQuestion:
@@ -215,8 +215,8 @@ skills: autolinear:linear-integration, autolinear:tag-command-mapping
 **Tag Mappings**:
 | Tag | Command | Agent |
 |-----|---------|-------|
-| @frontend | /dev:feature | developer |
-| @backend | /dev:implement | developer |
+| @frontend | /dev:dev | developer |
+| @backend | /dev:dev | developer |
 | @debug | /dev:debug | debugger |
 
 **Proof Settings**:

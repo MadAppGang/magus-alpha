@@ -1,9 +1,6 @@
 ---
 name: proof-of-work
 description: Proof artifact generation patterns for task validation. Covers screenshots, test results, deployments, and confidence scoring.
-version: 0.1.0
-tags: [proof, validation, screenshots, tests, deployment]
-keywords: [proof, artifact, screenshot, test, deployment, confidence, validation]
 user-invocable: false
 ---
 plugin: autolinear

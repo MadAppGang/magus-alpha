@@ -1,9 +1,6 @@
 ---
 name: state-machine
 description: Task lifecycle state transitions with validation gates. Defines states, triggers, and required proofs.
-version: 0.1.0
-tags: [state-machine, workflow, transitions, gates]
-keywords: [state, transition, gate, validation, workflow, lifecycle]
 user-invocable: false
 ---
 plugin: autolinear

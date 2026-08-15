@@ -56,12 +56,12 @@ allowed-tools: Read
 
 | Tag | Command | Use Case |
 |-----|---------|----------|
-| @frontend | /dev:feature | React/Vue implementation |
-| @backend | /dev:implement | API/database work |
+| @frontend | /dev:dev | React/Vue implementation |
+| @backend | /dev:dev | API/database work |
 | @debug | /dev:debug | Bug investigation |
-| @test | /dev:test-architect | Test creation |
-| @review | /commit-commands:commit-push-pr | Code review + PR |
-| @ui | /dev:ui | Design validation |
+| @test | /dev:dev | Test creation |
+| @review | /dev:audit | Code review |
+| @ui | /dev:design-system | Design validation |
 
 ## Workflow
 

@@ -18,23 +18,23 @@ proof:
 # Override default mappings or add new ones
 tag_mappings:
   "@frontend":
-    command: "/dev:feature"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["react-typescript", "testing-frontend"]
 
   "@backend":
-    command: "/dev:implement"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["golang", "api-design"]
 
   "@database":
-    command: "/dev:implement"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["database-patterns"]
     systemPrompt: "You are a database specialist."
 
   "@performance":
-    command: "/dev:implement"
+    command: "/dev:dev"
     agent: "developer"
     skills: ["universal-patterns"]
     systemPrompt: "You are a performance optimization expert."

@@ -159,8 +159,9 @@ skills: multimodel:multi-model-validation, multimodel:quality-gates
 **Perfect for:** complex multi-phase workflows, multi-model validation, parallel execution
 patterns, production-grade error handling
 
-> Model IDs come from `shared/model-aliases.json` — pass bare aliases (`grok`, `gemini`, `gpt`)
-> and let claudish route them. Never add provider prefixes.
+> Model IDs come from claudish's live catalog (`list_models` / `search_models`) — pass the
+> bare model ID and let claudish route it. Never add provider prefixes, and never resolve
+> an ID from memory or a committed file.
 
 ---
 
@@ -379,64 +380,24 @@ Fetches your Figma component, adapts it to your codebase, installs dependencies,
 
 ## 📚 Documentation
 
-### For Users
+Start at the **[documentation home](./docs/index.md)**.
 
-- **[Troubleshooting](./docs/troubleshooting.md)** - Common issues and solutions
-- **[Advanced Usage](./docs/advanced-usage.md)** - Advanced configuration and workflows
+### Using the plugins
 
-### For Developers
+- **[Plugin Catalog](./docs/plugins/index.md)** - Every plugin, with its commands, subagents and skills
+- **[Advanced Usage](./docs/guides/advanced-usage.md)** - Installation methods, configuration, and workflows
+- **[Troubleshooting](./docs/guides/troubleshooting.md)** - Common issues and solutions
 
-- **[Development Guide](./docs/development-guide.md)** - How to create plugins
-- **[Contributing Guide](./docs/contributing.md)** - How to contribute to the marketplace
-- **[Marketplace Reference](./docs/marketplace-reference.md)** - Technical schemas and structure
-- **[Version Validation](./docs/validation.md)** - Automated version validation system (prevents marketplace/plugin version mismatches)
-
-### Technical Documentation
-
-For architecture and implementation details, see the **[ai-docs](./ai-docs/)** directory:
-
-- **[TEAM_CONFIG_ARCHITECTURE.md](./ai-docs/TEAM_CONFIG_ARCHITECTURE.md)** - Team-first configuration
-- **[DYNAMIC_MCP_GUIDE.md](./ai-docs/DYNAMIC_MCP_GUIDE.md)** - MCP server configuration patterns
+Writing a plugin is a separate tutorial; those guides live in `docs/authoring/` and are not
+part of the user documentation.
 
 ---
 
-## 📋 Roadmap
-
-### Current Focus
-
-- ✅ Dev plugin (v2.12.1 - universal dev assistant, design-system guardrails)
-- ✅ Code Analysis plugin (v5.3.0 - semantic search and AST analysis via mnemex)
-- ✅ Multimodel plugin (v3.2.0 - multi-model orchestration and blind voting)
-- ✅ Terminal plugin (v4.1.2 - intent-level terminal, tmux-mcp, pane safety)
-- ✅ Statusline plugin (v2.1.2 - adaptive, worktree-aware statusline)
-- ✅ Marketplace split (magus v8.0.0 - marketing plugins moved to `magus-marketing`)
-
-See [ROADMAP.md](./ROADMAP.md) for per-plugin forward-looking items.
-
-### Future Plugins
-
-- **Testing Tools**: E2E testing, visual regression, performance testing
-- **UI Components**: Design system tools, component generators
-- **Backend Development**: Node.js, API design, database tools
-- **DevOps**: Docker, Kubernetes, CI/CD automation
-- **Documentation**: Auto-generate docs, API reference, guides
-
-### Community Requests
+## 💡 Plugin Requests
 
 Have a plugin idea? [Open an issue](https://github.com/MadAppGang/magus/issues) with the `plugin-request` label.
 
----
-## 📖 Detailed Documentation
-
-### Technical Documentation
-
-For technical details and architecture, see the **[ai-docs](./ai-docs/)** directory:
-
-#### Architecture & Configuration
-- **[TEAM_CONFIG_ARCHITECTURE.md](./ai-docs/TEAM_CONFIG_ARCHITECTURE.md)** - Team-first configuration, shareable config vs private secrets
-- **[DYNAMIC_MCP_GUIDE.md](./ai-docs/DYNAMIC_MCP_GUIDE.md)** - Dynamic MCP server configuration patterns
-
-#### Reference
+Planned work and candidate plugins live in [ROADMAP.md](./ROADMAP.md). This README describes what ships today.
 
 ---
 
