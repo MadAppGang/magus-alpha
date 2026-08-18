@@ -1,6 +1,6 @@
 ---
 name: proof-generator
-description: Generates proof-of-work artifacts for task validation
+description: Generates proof-of-work artifacts — diffs, test output, screenshots — that show a Linear task was actually done. Use when closing an autolinear task, or when a reviewer asks for evidence rather than a claim.
 tools: Bash, Read, Write, Glob
 skills: autolinear:proof-of-work
 ---

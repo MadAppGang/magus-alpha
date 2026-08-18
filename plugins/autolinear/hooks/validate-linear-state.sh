@@ -1,6 +1,6 @@
 #!/bin/bash
 # Validate Linear state before task delegation
-# This hook runs before Task tool to ensure Linear state is consistent
+# This hook runs before Agent tool to ensure Linear state is consistent
 
 # Only validate for autolinear-related tasks
 if [[ "$TASK_PROMPT" != *"autolinear"* ]]; then

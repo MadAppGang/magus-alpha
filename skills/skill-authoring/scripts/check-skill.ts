@@ -108,15 +108,28 @@ if (!desc) {
 
 // A hidden skill still pays nothing, but a listed one that nothing routes to is a trap.
 if (hidden && fields["user-invocable"] === "false") {
-  const refs = ["agents", "commands"].flatMap((sub) => {
-    const p = join(dir, "..", "..", "..", sub);
-    if (!existsSync(p)) return [];
-    try {
-      return readdirSync(p).filter((f) => f.endsWith(".md")).map((f) => readFileSync(join(p, f), "utf8"));
-    } catch {
-      return [];
+  // Skills nest at varying depth — plugins/<p>/skills/<s> but also
+  // plugins/<p>/skills/<group>/<s>. Walk up looking for the plugin root
+  // rather than assuming a fixed number of levels; a hardcoded ".." count
+  // silently resolved to plugins/commands and made every hidden skill at
+  // the shallow depth look unreachable.
+  const refs: string[] = [];
+  let root = dir;
+  for (let up = 0; up < 5; up++) {
+    root = join(root, "..");
+    for (const sub of ["agents", "commands"]) {
+      const p = join(root, sub);
+      if (!existsSync(p)) continue;
+      try {
+        for (const f of readdirSync(p)) {
+          if (f.endsWith(".md")) refs.push(readFileSync(join(p, f), "utf8"));
+        }
+      } catch {
+        // unreadable directory is not a reference
+      }
     }
-  });
+    if (existsSync(join(root, "plugin.json")) || existsSync(join(root, ".claude-plugin"))) break;
+  }
   if (name && !refs.some((t) => t.includes(name))) {
     errors.push(`hidden AND user-invocable:false AND nothing references "${name}" — unreachable`);
   }

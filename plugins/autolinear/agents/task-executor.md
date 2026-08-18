@@ -1,7 +1,7 @@
 ---
 name: task-executor
-description: Main agent that executes picked-up Linear tasks using ReAct pattern
-tools: TaskCreate, TaskUpdate, TaskList, TaskGet, Read, Write, Edit, Bash, Glob, Grep, Task
+description: Executes a picked-up Linear issue end to end, reasoning and acting in a loop until the acceptance criteria are met. Use when autolinear has claimed an issue and the implementation work needs to start.
+tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 skills: dev:universal-patterns, dev:context-detection, autolinear:state-machine
 ---
 
@@ -33,16 +33,6 @@ skills: dev:universal-patterns, dev:context-detection, autolinear:state-machine
 
       **Max iterations**: 50 actions per task
     </react_pattern>
-
-    <todowrite_requirement>
-      Track execution progress:
-      1. Understand task requirements
-      2. Analyze codebase context
-      3. Plan implementation approach
-      4. Implement changes
-      5. Run quality checks
-      6. Report results
-    </todowrite_requirement>
 
     <quality_checks>
       **Run quality checks before completing:**

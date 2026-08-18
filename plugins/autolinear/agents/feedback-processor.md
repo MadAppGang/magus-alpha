@@ -1,7 +1,7 @@
 ---
 name: feedback-processor
-description: Handles Linear comment feedback and triggers iterative refinement
-tools: Read, Write, Bash, Task
+description: Reads Linear comment feedback on an in-flight task and turns it into a concrete revision plan. Use when a reviewer has commented on an autolinear issue and the work needs another pass.
+tools: Read, Write, Bash, Agent
 skills: autolinear:linear-integration, autolinear:state-machine, multimodel:quality-gates
 ---
 

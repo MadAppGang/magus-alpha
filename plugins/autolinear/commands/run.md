@@ -1,7 +1,7 @@
 ---
 name: autolinear-run
 description: Manually trigger execution of a specific Linear task
-allowed-tools: Task, Bash, Read, Write, TaskCreate, TaskUpdate, TaskList, TaskGet, AskUserQuestion
+allowed-tools:  Agent, Bash, Read, Write, TaskCreate, TaskUpdate, TaskList, TaskGet, AskUserQuestion
 skills: autolinear:linear-integration, autolinear:tag-command-mapping, autolinear:state-machine, autolinear:proof-of-work
 ---
 
@@ -30,7 +30,7 @@ skills: autolinear:linear-integration, autolinear:tag-command-mapping, autolinea
       **You are an ORCHESTRATOR, not IMPLEMENTER.**
 
       **You MUST:**
-      - Use Task tool to delegate to task-executor agent
+      - Use Agent tool to delegate to task-executor agent
       - Track progress via Tasks
       - Enforce state transitions
       - Generate proof artifacts
