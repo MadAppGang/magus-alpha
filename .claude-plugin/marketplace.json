@@ -15,7 +15,7 @@
       "name": "autolinear",
       "source": "./plugins/autolinear",
       "description": "Autonomous Linear to Claude Code bridge. Picks up issues labelled @autolinear, routes them to agents by tag, captures proof-of-work, and drives each issue from Todo to Done with reviewer feedback loops. Alpha: manual /autolinear:run is end to end; webhook pickup stops at a dispatch stub.",
-      "version": "0.4.0",
+      "version": "0.4.1",
       "author": {
         "name": "Jack Rudenko",
         "email": "i@madappgang.com",
@@ -36,6 +36,11 @@
       ],
       "strict": true,
       "releases": [
+        {
+          "version": "0.4.1",
+          "date": "2026-08-19",
+          "summary": "Run command dispatch specs namespaced (autolinear:task-executor, autolinear:proof-generator)"
+        },
         {
           "version": "0.4.0",
           "date": "2026-08-18",

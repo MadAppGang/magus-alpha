@@ -123,7 +123,7 @@ skills: autolinear:linear-integration, autolinear:tag-command-mapping, autolinea
         <step>
           Delegate to task-executor agent:
           ```
-          Task: autolinear:task-executor
+          Agent: autolinear:task-executor
             Prompt: "SESSION_PATH: ${SESSION_PATH}
 
                      Execute task from ${SESSION_PATH}/task-context.md
@@ -143,7 +143,7 @@ skills: autolinear:linear-integration, autolinear:tag-command-mapping, autolinea
         <step>
           Delegate to proof-generator agent:
           ```
-          Task: autolinear:proof-generator
+          Agent: autolinear:proof-generator
             Prompt: "SESSION_PATH: ${SESSION_PATH}
                      TASK_TYPE: {task_type}
                      ISSUE_ID: ${ISSUE_ID}

@@ -1,6 +1,6 @@
 {
   "name": "autolinear",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Autonomous Linear to Claude Code bridge. Picks up issues labelled @autolinear, routes them to agents by tag, captures proof-of-work, and drives each issue from Todo to Done with reviewer feedback loops. Alpha: manual /autolinear:run is end to end; webhook pickup stops at a dispatch stub.",
   "author": {
     "name": "Jack Rudenko",
