@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "Alpha distribution channel for Magus \u2014 experimental plugins with partial wiring, TODO-gaps, and evolving interfaces. Source of truth: MadAppGang/magus-src. This is a lean dist repo.",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "pluginRoot": "./plugins"
   },
   "plugins": [
