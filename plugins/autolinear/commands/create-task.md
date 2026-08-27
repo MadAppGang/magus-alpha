@@ -1,7 +1,7 @@
 ---
 name: autolinear-create-task
 description: Create a Linear task from CLI and assign to autolinear for execution
-allowed-tools:  Agent, AskUserQuestion, Bash, Read, Write, TaskCreate, TaskUpdate, TaskList, TaskGet
+allowed-tools:  Agent, AskUserQuestion, Bash, Read, Write
 skills: autolinear:linear-integration, autolinear:tag-command-mapping
 ---
 

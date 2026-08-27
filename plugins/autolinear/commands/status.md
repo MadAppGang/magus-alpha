@@ -1,7 +1,7 @@
 ---
 name: autolinear-status
 description: Check autolinear status, queue, and task progress
-allowed-tools: Bash, Read, AskUserQuestion, TaskCreate, TaskUpdate, TaskList, TaskGet
+allowed-tools: Bash, Read, AskUserQuestion
 skills: autolinear:linear-integration, autolinear:state-machine
 ---
 

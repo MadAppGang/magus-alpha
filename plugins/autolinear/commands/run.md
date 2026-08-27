@@ -1,7 +1,7 @@
 ---
 name: autolinear-run
 description: Manually trigger execution of a specific Linear task
-allowed-tools:  Agent, Bash, Read, Write, TaskCreate, TaskUpdate, TaskList, TaskGet, AskUserQuestion
+allowed-tools:  Agent, Bash, Read, Write, AskUserQuestion
 skills: autolinear:linear-integration, autolinear:tag-command-mapping, autolinear:state-machine, autolinear:proof-of-work
 ---
 
