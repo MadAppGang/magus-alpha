@@ -31,7 +31,7 @@ Tag-to-command mapping is the core routing mechanism in autolinear. When a task 
 |------------|---------|-------|--------|
 | @frontend | /dev:dev | developer | react-typescript |
 | @backend | /dev:dev | developer | golang, api-design |
-| @debug | /dev:debug | debugger | debugging-strategies |
+| @debug | /dev:debug | debugger | systematic-debugging |
 | @test | /dev:dev | test-architect | testing-strategies |
 | @review | /dev:audit | reviewer | universal-patterns |
 | @refactor | /dev:dev | developer | universal-patterns |
@@ -159,7 +159,7 @@ const mapping = getMappingForTag(tag);
 const labels = ['@frontend', '@debug'];
 const tag = selectTag(labels);  // '@debug' (higher precedence)
 const mapping = getMappingForTag(tag);
-// Result: { command: '/dev:debug', agent: 'debugger', skills: ['debugging-strategies'] }
+// Result: { command: '/dev:debug', agent: 'debugger', skills: ['systematic-debugging'] }
 ```
 
 ### Example 3: Text Classification Fallback
@@ -170,7 +170,7 @@ const labels = [];
 const title = "Fix login button not working";
 const mapping = resolveMapping(labels, title, "");
 // Classifies as BUG_FIX -> @debug
-// Result: { command: '/dev:debug', agent: 'debugger', skills: ['debugging-strategies'] }
+// Result: { command: '/dev:debug', agent: 'debugger', skills: ['systematic-debugging'] }
 ```
 
 ## Best Practices
