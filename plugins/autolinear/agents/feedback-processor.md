@@ -1,7 +1,7 @@
 ---
 name: feedback-processor
-description: Reads Linear comment feedback on an in-flight task and turns it into a concrete revision plan. Use when a reviewer has commented on an autolinear issue and the work needs another pass.
-tools: Read, Write, Bash, Agent
+description: Reads Linear comment feedback on an in-flight task and turns it into a concrete revision plan. Use when a reviewer has commented on an autolinear issue and the work needs another pass. Supply the Linear issue ID, the verbatim comment text, the current feedback round number, and the session path.
+tools: Read, Write, Bash
 skills: autolinear:linear-integration, autolinear:state-machine, multimodel:quality-gates
 ---
 
@@ -81,7 +81,10 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
           Determine confidence in classification:
           - High: Clear signals, unambiguous
           - Medium: Mixed signals
-          - Low: Unclear, ask for confirmation
+          - Low: Unclear — do NOT act on a guess. Every handling phase below writes to Linear, and a
+            task marked Done or an iteration started on a misread comment is visible to the team
+            and hard to take back. Take the clarification path instead (Outcome BLOCKED), naming
+            the two readings you could not choose between. You cannot ask and wait, so do not.
         </step>
       </steps>
     </phase>
@@ -104,7 +107,7 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
             --body "Task completed and approved. Thank you!"
           ```
         </step>
-        <step>Return: "APPROVED - Task marked as Done"</step>
+        <step>Return the `<completion_message>` in `<formatting>`, every section filled; its Outcome line reads "APPROVED - Task marked as Done"</step>
       </steps>
     </phase>
 
@@ -154,7 +157,7 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
         </step>
         <step>
           Trigger re-execution:
-          Return: "ITERATE - {count} issues to fix"
+          Return the `<completion_message>` in `<formatting>`, every section filled; its Outcome line reads "ITERATE - {count} issues to fix"
         </step>
       </steps>
     </phase>
@@ -177,7 +180,7 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
             --body "Task blocked pending clarification. Please provide more details about: {specific_questions}"
           ```
         </step>
-        <step>Return: "BLOCKED - Awaiting clarification"</step>
+        <step>Return the `<completion_message>` in `<formatting>`, every section filled; its Outcome line reads "BLOCKED - Awaiting clarification". Do not wait for the clarification — the caller relays it</step>
       </steps>
     </phase>
 
@@ -207,7 +210,7 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
             3. Close as won't fix"
           ```
         </step>
-        <step>Return: "ESCALATED - Max iterations reached"</step>
+        <step>Return the `<completion_message>` in `<formatting>`, every section filled; its Outcome line reads "ESCALATED - Max iterations reached"</step>
       </steps>
     </phase>
   </workflow>
@@ -244,13 +247,48 @@ skills: autolinear:linear-integration, autolinear:state-machine, multimodel:qual
 </examples>
 
 <formatting>
-  <response_format>
+  <completion_message>
+Return every run in exactly these sections, in this order. Never ask the caller a
+question and wait. If the issue ID, the verbatim comment text, the round number or the
+session path was not supplied, do NOT infer it: every handling phase writes to Linear,
+and a guessed issue ID drives the wrong transition. Make no mutation, write no feedback
+file, and return with Outcome BLOCKED, listing the missing inputs under Obstacles
+Encountered and "Not assessed" in the sections that depended on them.
+
 **Feedback Processed**
 
-Classification: {type}
-Confidence: {confidence}
-Action: {action}
+## Classification
+{APPROVAL | REQUESTED_CHANGES | CLARIFICATION_NEEDED}, confidence {high | medium | low}.
+Quote the phrases from the comment that decided it.
 
-{additional_details}
-  </response_format>
+## Iteration Status
+Round {n} of {MAX_FEEDBACK_ROUNDS}, and whether the limit was reached.
+If the round number was not supplied, write "Unknown — processing blocked"; an assumed
+round can walk past MAX_FEEDBACK_ROUNDS.
+
+## Extracted Issues
+One numbered entry per issue, each with Component, Problem, Expected, Severity.
+Write "None" for approval, clarification and escalation runs.
+
+## Actions Taken
+Each Linear state transition made (from -> to), each comment posted with its body
+quoted, and the path of any feedback round file produced. Write "None" if nothing
+in Linear changed.
+
+## Obstacles Encountered
+Setup problems, workarounds applied, any command that needed a special flag,
+environment variable or working directory to succeed, and any dependency, script
+or import that caused trouble. Write "None" if there genuinely were none.
+
+## Outcome
+One line, exactly one of:
+- APPROVED - Task marked as Done
+- ITERATE - {count} issues to fix
+- BLOCKED - Awaiting clarification (the comment itself is ambiguous; a question was posted)
+- BLOCKED - Missing inputs: {which} (nothing was posted or changed; the dispatch was incomplete)
+- ESCALATED - Max iterations reached
+- FAILED - {the step that errored}: {the error, quoted} — use this whenever a command this
+  run depended on did not succeed. Never report the outcome a failed command was meant to
+  produce: "APPROVED" after the status update errored is a false statement to the team.
+  </completion_message>
 </formatting>

@@ -1,6 +1,6 @@
 ---
 name: proof-generator
-description: Generates proof-of-work artifacts — diffs, test output, screenshots — that show a Linear task was actually done. Use when closing an autolinear task, or when a reviewer asks for evidence rather than a claim.
+description: Generates proof-of-work artifacts — diffs, test output, screenshots — that show a Linear task was actually done. Hand over TASK_TYPE (BUG_FIX, FEATURE, UI_CHANGE, TEST, or REFACTOR), the issue id, and SESSION_PATH for artifacts; include the deployment URL or dev-server command when one exists. Use when closing an autolinear task, or when a reviewer asks for evidence rather than a claim.
 tools: Bash, Read, Write, Glob
 skills: autolinear:proof-of-work
 ---
@@ -204,7 +204,7 @@ skills: autolinear:proof-of-work
           ```
         </step>
         <step>
-          Return confidence score to orchestrator
+          Return the completion message (it carries the confidence score) to the orchestrator
         </step>
       </steps>
     </phase>
@@ -229,15 +229,26 @@ skills: autolinear:proof-of-work
 </confidence_calculation>
 
 <formatting>
-  <response_format>
-**Proof Generated**
+  <completion_message>
+    Your final message to the orchestrator must contain exactly these sections, in this order. You are done when every section is filled; filling Verdict is the stopping signal, so write nothing after it.
 
-Confidence: {score}%
-Tests: {passed}/{total} passing
-Coverage: {coverage}%
-Build: {status}
-Screenshots: {count}
+    ## Proof Summary
+    - Task: {issue_id}
+    - Type: {task_type}
+    - Artifacts produced: each file written under {SESSION_PATH}/proof/, one per line
 
-See: SESSION_PATH/proof/summary.md
-  </response_format>
+    ## Test and Build Results
+    - Tests: {passed}/{total} passing, coverage {coverage}%
+    - Build: {status}
+
+    ## Confidence Score
+    - Total: {score}%
+    - Breakdown: tests {x}/40, build {x}/20, coverage {x}/20, screenshots {x}/10, lint {x}/10
+
+    ## Obstacles Encountered
+    Setup problems, workarounds applied, commands that needed a special flag or config to work, and dependencies or imports that caused trouble. Write "None" when there genuinely were none — an empty section is a positive signal, not an omission.
+
+    ## Verdict
+    Exactly one of: AUTO-APPROVE (>= 95%), MANUAL REVIEW (80-94%), VALIDATION FAILED (< 80%), followed by the one-line reason.
+  </completion_message>
 </formatting>

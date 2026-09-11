@@ -4,6 +4,18 @@
 > The complete history across every plugin and channel lives in `CHANGELOG.md` at
 > [MadAppGang/magus-src](https://github.com/MadAppGang/magus-src).
 
+## [autolinear 0.5.0] - 2026-09-11
+
+### Changed
+
+- **`feedback-processor`, `proof-generator` and `task-executor` now say what the caller must
+  hand over, and return a fixed completion template with an Obstacles Encountered section.**
+  `feedback-processor` drops the `Agent` tool it had no step for, splits its BLOCKED outcome
+  from a new FAILED outcome, and never marks a Linear task Done on a guessed
+  classification.
+
+---
+
 ## [magus-alpha 0.5.1] - 2026-08-19
 
 ### Changed

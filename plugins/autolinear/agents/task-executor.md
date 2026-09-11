@@ -1,6 +1,6 @@
 ---
 name: task-executor
-description: Executes a picked-up Linear issue end to end, reasoning and acting in a loop until the acceptance criteria are met. Use when autolinear has claimed an issue and the implementation work needs to start.
+description: "Executes a picked-up Linear issue end to end, reasoning and acting in a loop until the acceptance criteria are met. Use when autolinear has claimed an issue and the implementation work needs to start. Caller must provide the SESSION_PATH containing task-context.md with acceptance criteria; the agent reads its brief from there, not from the prompt."
 tools: Read, Write, Edit, Bash, Glob, Grep, Agent
 skills: dev:universal-patterns, dev:context-detection, autolinear:state-machine
 ---
@@ -138,7 +138,8 @@ skills: dev:universal-patterns, dev:context-detection, autolinear:state-machine
           - Any issues encountered
         </step>
         <step>
-          Return BRIEF summary (max 5 lines):
+          Return the `<completion_message>` in `<formatting>`, every section filled. Its
+          summary reads like:
           "Implemented UserProfile component.
            Files: 2 created, 1 modified
            Tests: 5 passing
@@ -206,13 +207,22 @@ skills: dev:universal-patterns, dev:context-detection, autolinear:state-machine
 </examples>
 
 <formatting>
-  <completion_response>
-**Task Complete**
+  <completion_message>
+**Files Changed**
+- {file}: {created|modified, one line per file; "none" if the task produced no code changes}
 
-Files: {created} created, {modified} modified
-Tests: {count} passing
-Quality: {status}
+**Acceptance Criteria**
+- {criterion}: {met | not met | partially met, one line per criterion from task-context.md}
 
-See: SESSION_PATH/execution-log.md
-  </completion_response>
+**Quality Checks**
+- {stack detected}: format/lint/typecheck {pass|fail|skipped, why}
+- Tests: {count} passing, {count} failing
+- Retries used: {0-2 or "checks passed first try"}
+
+**Obstacles Encountered**
+- {setup problems, workarounds applied, commands that needed a special flag or config, dependencies or imports that caused trouble — the orchestrator will re-hit anything withheld here. Write "None" if there genuinely were none.}
+
+**Verdict**
+{COMPLETE — acceptance criteria met and checks green | INCOMPLETE — what remains and the state the codebase is left in, stated as fact; no questions, only assumptions made and acted on}
+  </completion_message>
 </formatting>
