@@ -7,67 +7,8 @@
   },
   "metadata": {
     "description": "Alpha distribution channel for Magus \u2014 experimental plugins with partial wiring, TODO-gaps, and evolving interfaces. Source of truth: MadAppGang/magus-src. This is a lean dist repo.",
-    "version": "0.5.1",
+    "version": "0.6.0",
     "pluginRoot": "./plugins"
   },
-  "plugins": [
-    {
-      "name": "autolinear",
-      "source": "./plugins/autolinear",
-      "description": "Autonomous Linear to Claude Code bridge. Picks up issues labelled @autolinear, routes them to agents by tag, captures proof-of-work, and drives each issue from Todo to Done with reviewer feedback loops. Alpha: manual /autolinear:run is end to end; webhook pickup stops at a dispatch stub.",
-      "version": "0.5.0",
-      "author": {
-        "name": "Jack Rudenko",
-        "email": "i@madappgang.com",
-        "company": "MadAppGang"
-      },
-      "category": "automation",
-      "keywords": [
-        "autolinear",
-        "autopilot",
-        "autonomous",
-        "linear",
-        "task-execution",
-        "proof-of-work",
-        "webhook",
-        "state-machine",
-        "feedback-loop",
-        "multi-agent"
-      ],
-      "strict": true,
-      "releases": [
-        {
-          "version": "0.5.0",
-          "date": "2026-09-11",
-          "kinds": [
-            "Changed"
-          ],
-          "summary": "feedback-processor, proof-generator and task-executor now say what the caller must hand over,\u2026"
-        },
-        {
-          "version": "0.4.2",
-          "date": "2026-08-26",
-          "summary": "The same manifest move, with no change to what each registers"
-        },
-        {
-          "version": "0.4.1",
-          "date": "2026-08-19",
-          "summary": "Run command dispatch specs namespaced (autolinear:task-executor, autolinear:proof-generator)"
-        },
-        {
-          "version": "0.4.0",
-          "date": "2026-08-18",
-          "summary": "Same tool-and-instruction correction across its agents"
-        },
-        {
-          "version": "0.3.0",
-          "date": "2026-04-15",
-          "kinds": [
-            "Changed"
-          ],
-          "summary": "Renamed from autopilot and split out to the magus-alpha channel. Enable it as\u2026"
-        }
-      ]
-    }
-  ]
+  "plugins": []
 }

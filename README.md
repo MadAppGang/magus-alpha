@@ -83,7 +83,7 @@ These aren't "best practices" from blog posts. This is the **battle-tested playb
 # Step 1: Add marketplace globally (one-time setup)
 /plugin marketplace add MadAppGang/magus
 
-# Optional: marketing & content plugins (SEO, image generation, video, cold email)
+# Optional: content plugins (image generation, video editing)
 /plugin marketplace add MadAppGang/magus-marketing
 ```
 
@@ -256,10 +256,10 @@ if you need them:
 | Marketplace | Contains |
 |---|---|
 | `MadAppGang/magus` | Core development plugins — dev, code-analysis, terminal, designer, browser-use, and more |
-| `MadAppGang/magus-marketing` | SEO, AI image generation, video editing, cold email outreach |
-| `MadAppGang/magus-alpha` | Experimental plugins with evolving interfaces |
+| `MadAppGang/magus-marketing` | AI image generation, video editing |
+| `MadAppGang/magus-alpha` | Experimental plugins with evolving interfaces — none published yet |
 
-Plugin IDs carry the marketplace, so enable them as `seo@magus-marketing`, not `seo@magus`.
+Plugin IDs carry the marketplace, so enable them as `image-generate@magus-marketing`, not `image-generate@magus`.
 
 #### Step 2: Enable Plugins in Your Project
 

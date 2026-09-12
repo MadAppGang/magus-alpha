@@ -4,29 +4,14 @@
 > The complete history across every plugin and channel lives in `CHANGELOG.md` at
 > [MadAppGang/magus-src](https://github.com/MadAppGang/magus-src).
 
-## [autolinear 0.5.0] - 2026-09-11
+## [magus-alpha 0.6.0] - 2026-09-12
 
-### Changed
+### Removed
 
-- **`feedback-processor`, `proof-generator` and `task-executor` now say what the caller must
-  hand over, and return a fixed completion template with an Obstacles Encountered section.**
-  `feedback-processor` drops the `Agent` tool it had no step for, splits its BLOCKED outcome
-  from a new FAILED outcome, and never marks a Linear task Done on a guessed
-  classification.
+- **BREAKING — `autolinear` is gone from `magus-alpha`.** The channel itself stays for
+  upcoming alpha plugins, and publishes an empty marketplace until the next one lands.
 
----
+### Migration notes
 
-## [magus-alpha 0.5.1] - 2026-08-19
-
-### Changed
-
-- Channel version aligned with Marketplace 9.3.0: `autolinear` v0.4.1. Same rationale
-  as magus-marketing 2.0.1.
-
----
-
-## [autolinear 0.3.0] - 2026-04-15
-
-### Changed
-- **Renamed from `autopilot`** and split out to the `magus-alpha` channel. Enable it as
-  `autolinear@magus-alpha`.
+Remove `autolinear@magus-alpha` from `enabledPlugins`. Keep the `magus-alpha` marketplace
+registered: new alpha plugins will ship there.
