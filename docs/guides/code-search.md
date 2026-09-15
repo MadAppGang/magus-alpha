@@ -1,18 +1,18 @@
-# code-analysis: step by step
+# code-search: step by step
 
 For code you didn't write. Or wrote long enough ago that it counts.
 
 What the plugin ships is on the
-[code-analysis plugin page](../plugins/magus/code-analysis.md).
+[code-search plugin page](../plugins/magus/code-search.md).
 
 ---
 
-## `/code-analysis:analyze` — find out how something works
+## `/code-search:analyze` — find out how something works
 
 ### Step 1. Ask a specific question
 
 ```
-/code-analysis:analyze Where is user authentication handled?
+/code-search:analyze Where is user authentication handled?
 ```
 
 Be specific. "Analyze the codebase" gets you a tour. "Where is the email validation logic"
@@ -23,9 +23,9 @@ to the same question.
 
 ### Step 2. It picks its tools
 
-![Flow diagram: a question goes to the detective agent, which searches structurally where the configured engine supports it and by text where the question is about an exact string, then returns a location report](./images/code-analysis-flow.svg)
+![Flow diagram: a question goes to the analyze agent agent, which searches structurally where the configured engine supports it and by text where the question is about an exact string, then returns a location report](./images/code-search-flow.svg)
 
-The detective runs in its own context window and cannot write. An investigation can't turn
+The analyze agent runs in its own context window and cannot write. An investigation can't turn
 into a refactor you didn't ask for.
 
 ### Step 3. Read the location report
@@ -75,7 +75,7 @@ So a missing tool tells you something true, and every tool present is one you ca
 ### To set it up
 
 ```
-/code-analysis:setup
+/code-search:setup
 ```
 
 It reports which engine your project settings name, whether it answered, and what to do when
@@ -98,11 +98,11 @@ in `.gitignore` and never commit them.
 
 | You want | Use |
 |---|---|
-| To understand code | `/code-analysis:analyze` |
+| To understand code | `/code-search:analyze` |
 | The same thing, with modes, through `dev` | [Understanding code](./dev-investigate.md) |
 | To find *and fix* a bug | [Fixing a bug](./dev-debug.md) |
 | To change code you already understand | just ask |
 
-`/dev:investigate` is a thin wrapper over this same detective. Use whichever name you
+`/dev:investigate` is a thin wrapper over this same analyze agent. Use whichever name you
 remember. Both are read-only, so neither will change anything while you're still working out
 what to change.
