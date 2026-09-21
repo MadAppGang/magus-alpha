@@ -1,0 +1,11 @@
+{
+  "name": "claudoom",
+  "version": "0.1.0",
+  "description": "Plays Doom-engine WADs in a Claude Code pane: runs doom-cli (GPLv2, built from upstream) in a private tmux server and repaints its frames into a Raster. Fetches Freedoom (BSD) on demand. DOOM is a ZeniMax trademark; not affiliated with id Software, ZeniMax or Anthropic.",
+  "author": {
+    "name": "MadAppGang",
+    "email": "i@madappgang.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/MadAppGang/magus"
+}
