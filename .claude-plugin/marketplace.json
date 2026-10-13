@@ -43,6 +43,38 @@
           "summary": "/claudoom plays a Doom-engine WAD in a pane beside the conversation, at about 30 frames a second"
         }
       ]
+    },
+    {
+      "name": "agent-colours",
+      "source": "./plugins/agent-colours",
+      "description": "Draws each subagent's name on a coloured badge in Claude Code: in its Agent row and wherever a reply names it. The colour comes from the agent's own color: field. Alpha: a function-hooks mod, not commands or skills.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Jack Rudenko",
+        "email": "i@madappgang.com",
+        "company": "MadAppGang"
+      },
+      "category": "utility",
+      "keywords": [
+        "agents",
+        "subagents",
+        "colour",
+        "color",
+        "badge",
+        "function-hooks",
+        "mod"
+      ],
+      "strict": true,
+      "releases": [
+        {
+          "version": "0.1.0",
+          "date": "2026-10-13",
+          "kinds": [
+            "Added"
+          ],
+          "summary": "Each subagent's name sits on a coloured badge, in its Agent row and in every reply that names it"
+        }
+      ]
     }
   ]
 }

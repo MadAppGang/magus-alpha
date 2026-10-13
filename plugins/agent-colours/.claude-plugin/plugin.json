@@ -1,0 +1,11 @@
+{
+  "name": "agent-colours",
+  "version": "0.1.0",
+  "description": "Draws each subagent's name on a coloured badge in Claude Code: in its Agent row and wherever a reply names it. The colour comes from the agent's own color: field. Alpha: a function-hooks mod, not commands or skills.",
+  "author": {
+    "name": "MadAppGang",
+    "email": "i@madappgang.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/MadAppGang/magus"
+}

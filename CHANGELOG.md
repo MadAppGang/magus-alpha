@@ -4,6 +4,30 @@
 > The complete history across every plugin and channel lives in `CHANGELOG.md` at
 > [MadAppGang/magus-src](https://github.com/MadAppGang/magus-src).
 
+## [agent-colours 0.1.0] - 2026-10-13
+
+### Added
+
+- **Each subagent's name sits on a coloured badge, in its Agent row and in every reply that
+  names it.** The colour is the agent file's own `color:` field, read from each installed
+  plugin's `agents/` folder, `~/.claude/agents/` and the project's `.claude/agents/`. A
+  value is one of Claude Code's colour names (`red`, `blue`, `green`, `yellow`, `purple`,
+  `orange`, `pink`, `cyan`) or a hex colour such as `"#FFD700"`.
+- `Explore`, `Plan` and `general-purpose` have no agent file, so they get fixed colours. An
+  agent with no `color:` field gets a colour picked from its name, the same one every time.
+- A function-hooks mod: it draws, and adds no commands, skills or agents. It loaded on
+  Claude Code 2.1.296 with `CLAUDE_CODE_ENABLE_FUNCTION_HOOKS` unset.
+
+### Known limits
+
+- A reply paragraph that names an agent is drawn by the mod, so it keeps bold, inline code
+  and headings only; links, italics and list bullets in that paragraph show as plain text.
+  Other paragraphs and code blocks are Claude Code's own.
+- The agents panel under the prompt, the `/agents` list, the spinner and the "Message from
+  …" label have no hook a mod can draw, and keep Claude Code's look.
+
+---
+
 ## [claudoom 0.1.0] - 2026-09-22
 
 ### Added
