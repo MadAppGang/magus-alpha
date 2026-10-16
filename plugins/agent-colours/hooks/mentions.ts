@@ -1,7 +1,10 @@
 // Splits a reply into the parts the engine keeps drawing as markdown and the
-// paragraphs that name an agent, which the mod draws itself as styled spans.
+// paragraphs that name an agent or a coloured skill, which the mod draws itself as
+// styled spans.
 
-export type Span = { text: string; bold?: boolean; code?: boolean; agent?: string }
+// `name` is the agent type or the skill key, never with a leading `/`.
+export type Mention = { kind: 'agent' | 'skill'; name: string }
+export type Span = { text: string; bold?: boolean; code?: boolean; mention?: Mention }
 export type Block = { kind: 'markdown'; text: string } | { kind: 'styled'; lines: Span[][] }
 
 const FENCE = /^\s*(```|~~~)/
@@ -42,7 +45,10 @@ const withMentions = (text: string, pattern: RegExp, style: Omit<Span, 'text'>):
   for (const m of text.matchAll(new RegExp(pattern.source, 'g'))) {
     const at = m.index ?? 0
     if (at > last) spans.push({ ...style, text: text.slice(last, at) })
-    spans.push({ ...style, text: m[0], agent: m[0] })
+    // A match in the pattern's `skill` group is a skill; any other is an agent.
+    const mention: Mention =
+      m.groups?.skill !== undefined ? { kind: 'skill', name: m[0].replace(/^\//, '') } : { kind: 'agent', name: m[0] }
+    spans.push({ ...style, text: m[0], mention })
     last = at + m[0].length
   }
   if (last < text.length) spans.push({ ...style, text: text.slice(last) })

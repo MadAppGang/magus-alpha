@@ -65,12 +65,39 @@ export const badgeFor = (agentType: string | undefined, colours: ReadonlyMap<str
 
 const escape = (text: string): string => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 
+// A skill's text colour: a named value's saturated colour (the badge background), or a
+// `#RRGGBB` value as written. Undefined for anything else, which means "not coloured".
+export const textColourFromField = (color: string): string | undefined => badgeFromField(color)?.bg
+
+const longestFirst = (names: Iterable<string>): string[] => [...names].sort((a, b) => b.length - a.length).map(escape)
+
+// A skill mention never starts inside a path or URL, and never runs on into a longer
+// word, path or file name; sentence punctuation after it is fine.
+const SKILL_BEFORE = '(?<![\\w./:~-])'
+const SKILL_AFTER = '(?![\\w:/-]|\\.\\w)'
+
 // Matches every agent name a reply can mention: the built-ins, every agent with a
 // `color:` field, and the types this session spawned. Longest first, so
 // `dev:developer` wins over a bare `developer`; never inside a longer word.
-export const mentionPattern = (names: Iterable<string>): RegExp => {
+//
+// `skillNames` are the coloured skill keys; `agentNames` beyond `names`, when given, are
+// further names that count as agents only for excluding skills (an agent file with no
+// `color:`). A name that is an agent stays an agent. Skill matches sit in the `skill`
+// named group: `/name` for any skill, `plugin:name` bare. With no skills left, the
+// pattern is exactly the agents-only one.
+export const mentionPattern = (
+  names: Iterable<string>,
+  skillNames: Iterable<string> = [],
+  agentNames: Iterable<string> = [],
+): RegExp => {
   const all = new Set([...Object.keys(BUILT_IN), ...names])
   all.delete('teammate')
-  const alternatives = [...all].sort((a, b) => b.length - a.length).map(escape)
-  return new RegExp(`(?<![\\w:-])(?:${alternatives.join('|')})(?![\\w:-])`, 'g')
+  const agents = `(?<![\\w:-])(?:${longestFirst(all).join('|')})(?![\\w:-])`
+  const notSkills = new Set([...all, ...agentNames])
+  const skills = [...new Set(skillNames)].filter(s => s && !notSkills.has(s))
+  if (!skills.length) return new RegExp(agents, 'g')
+  const qualified = skills.filter(s => s.includes(':'))
+  const alternatives = [`/(?:${longestFirst(skills).join('|')})`]
+  if (qualified.length) alternatives.push(`(?:${longestFirst(qualified).join('|')})`)
+  return new RegExp(`${agents}|(?<skill>${SKILL_BEFORE}(?:${alternatives.join('|')})${SKILL_AFTER})`, 'g')
 }

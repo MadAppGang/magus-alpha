@@ -4,6 +4,30 @@
 > The complete history across every plugin and channel lives in `CHANGELOG.md` at
 > [MadAppGang/magus-src](https://github.com/MadAppGang/magus-src).
 
+## [agent-colours 0.2.0] - 2026-10-16
+
+### Added
+
+- **A skill's name is drawn in the colour of its own `color:` field, in its Skill row and in
+  replies.** Text colour only, no badge. The values are the agent ones: a colour name or a
+  hex colour such as `"#FFD700"`. A skill with no valid `color:` keeps Claude Code's look.
+- Skills and commands are read where Claude Code finds them: each installed plugin's
+  `commands/`, `skills/` and the skill paths its manifest lists, then `~/.claude/commands/`,
+  `~/.claude/skills/` (symbolic links included), `.claude/commands/` and `.claude/skills/`.
+  The highest definition of a name decides alone, so a project skill with no `color:`
+  leaves that name uncoloured even when the user's has one.
+- In a reply, a skill is coloured only as `plugin:name` or `/name`, never as a bare word or
+  inside a path or URL. A name that is also an agent keeps its agent badge.
+
+### Known limits
+
+- The typed `/skill` prompt row, subfolder commands (`a:b`), collapsed tool groups, the
+  `/skills` list and the slash-command typeahead keep Claude Code's look.
+- A `/name` right beside bold or inline-code markers is judged on the run it sits in, not
+  on the characters past the marker, so it can colour where plain text would not.
+
+---
+
 ## [agent-colours 0.1.0] - 2026-10-13
 
 ### Added

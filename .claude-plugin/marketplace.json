@@ -47,8 +47,8 @@
     {
       "name": "agent-colours",
       "source": "./plugins/agent-colours",
-      "description": "Draws each subagent's name on a coloured badge in Claude Code: in its Agent row and wherever a reply names it. The colour comes from the agent's own color: field. Alpha: a function-hooks mod, not commands or skills.",
-      "version": "0.1.0",
+      "description": "Colours subagent and skill names in Claude Code by their own color: field. An agent's name sits on a coloured badge in its Agent row and in replies; a skill's name is drawn in its colour in its Skill row and in replies. Alpha: a function-hooks mod; it ships no commands or skills of its own.",
+      "version": "0.2.0",
       "author": {
         "name": "Jack Rudenko",
         "email": "i@madappgang.com",
@@ -66,6 +66,14 @@
       ],
       "strict": true,
       "releases": [
+        {
+          "version": "0.2.0",
+          "date": "2026-10-16",
+          "kinds": [
+            "Added"
+          ],
+          "summary": "A skill's name is drawn in the colour of its own color: field, in its Skill row and in replies"
+        },
         {
           "version": "0.1.0",
           "date": "2026-10-13",
