@@ -15,7 +15,7 @@
       "name": "claudoom",
       "source": "./plugins/claudoom",
       "description": "Plays Doom-engine WADs in a Claude Code pane: runs doom-cli (GPLv2, built from upstream) in a private tmux server and repaints its frames into a Raster. Fetches Freedoom (BSD) on demand. DOOM is a ZeniMax trademark; not affiliated with id Software, ZeniMax or Anthropic.",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
         "name": "Jack Rudenko",
         "email": "i@madappgang.com",
@@ -34,6 +34,14 @@
       ],
       "strict": true,
       "releases": [
+        {
+          "version": "0.1.1",
+          "date": "2026-11-19",
+          "kinds": [
+            "Fixed"
+          ],
+          "summary": "The missing-tmux message names claudoom's private tmux server"
+        },
         {
           "version": "0.1.0",
           "date": "2026-09-22",

@@ -4,6 +4,16 @@
 > The complete history across every plugin and channel lives in `CHANGELOG.md` at
 > [MadAppGang/magus-src](https://github.com/MadAppGang/magus-src).
 
+## [claudoom 0.1.1] - 2026-11-19
+
+### Fixed
+
+- **The missing-tmux message names claudoom's private tmux server.** claudoom needs the tmux
+  binary whatever terminal it runs in, herdr included, and the message now says so rather
+  than "claudoom runs inside tmux".
+
+---
+
 ## [agent-colours 0.2.0] - 2026-10-16
 
 ### Added

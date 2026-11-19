@@ -190,7 +190,7 @@ export function register(on: On) {
     }
 
     if (!(await Doom.hasTmux(run))) {
-      return { text: 'claudoom runs inside tmux, and tmux is not on PATH. Install it (brew install tmux), then run /claudoom again.' }
+      return { text: 'claudoom plays on its own private tmux server, so it needs the tmux binary whatever terminal you use, and tmux is not on PATH. Install it (brew install tmux), then run /claudoom again.' }
     }
 
     const where = await paths()
